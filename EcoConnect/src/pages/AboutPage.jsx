@@ -40,7 +40,7 @@ const AboutPage = () => {
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-green-700 to-blue-700 text-white py-20">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">About SDG Community Connect</h1>
+          <h1 className="text-5xl md:text-6xl font-bold mb-6">About EcoConnect</h1>
           <p className="text-xl md:text-2xl max-w-3xl mx-auto">
             Empowering communities to achieve sustainable development through collective action
           </p>

@@ -26,6 +26,25 @@ const ResourcesPage = () => {
     }
   };
 
+  // Handle actual file download
+  const handleDownload = (url, title) => {
+    // Try direct download first
+    const link = document.createElement('a');
+    link.href = url;
+    
+    // If it's a downloadable file (pdf, png, etc.), force download
+    if (url.endsWith('.pdf') || url.endsWith('.png') || url.endsWith('.jpg')) {
+      link.download = title.replace(/\s+/g, '_');
+    } else {
+      // If it's a link (like YouTube), open in new tab
+      link.target = '_blank';
+    }
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   const handleQuizAnswer = (answerIndex) => {
     setSelectedAnswer(answerIndex);
     if (answerIndex === quizQuestions[currentQuestion].correct) {
@@ -83,6 +102,7 @@ const ResourcesPage = () => {
           </div>
         </div>
 
+        {/* Resource Cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {filteredResources.map(resource => (
             <div key={resource.id} className="bg-white rounded-xl shadow-md hover:shadow-xl transition p-6">
@@ -96,7 +116,10 @@ const ResourcesPage = () => {
               <p className="text-gray-600 mb-4">{resource.description}</p>
               <div className="flex items-center justify-between">
                 <span className="text-sm text-gray-500">{resource.size}</span>
-                <button className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition flex items-center space-x-2">
+                <button
+                  onClick={() => handleDownload(resource.url, resource.title)}
+                  className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition flex items-center space-x-2"
+                >
                   <Download className="w-4 h-4" />
                   <span>Download</span>
                 </button>
@@ -216,4 +239,5 @@ const ResourcesPage = () => {
     </div>
   );
 };
+
 export default ResourcesPage;

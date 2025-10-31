@@ -97,7 +97,7 @@ const HomePage = () => {
           </div>
           <div className="bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl p-8 md:p-12 shadow-lg">
             <p className="text-xl text-gray-700 leading-relaxed mb-6">
-              SDG Community Connect is a platform dedicated to empowering students, citizens, 
+              EcoConnect is a platform dedicated to empowering students, citizens, 
               and volunteers to take action towards achieving the United Nations' Sustainable 
               Development Goals.
             </p>
